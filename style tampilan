@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Cuaca Lengkap</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #6b8cbc;
+            --accent: #ff7e5f;
+            --text-light: #f8f9fa;
+            --text-dark: #2d3748;
+            --bg-light: #f0f2f5;
+            --card-bg: #ffffff;
+            --shadow-light: rgba(163, 177, 198, 0.5);
+            --shadow-dark: rgba(255, 255, 255, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            transition: background-color 0.5s ease;
+        }
+
+        .weather-app {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 30px;
+            padding: 30px;
+            background: var(--card-bg);
+            box-shadow: 
+                12px 12px 24px var(--shadow-light),
+                -12px -12px 24px var(--shadow-dark);
+            transition: all 0.3s ease;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .app-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .app-subtitle {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 400;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        #lokasiInput {
+            flex-grow: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 20px;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            font-size: 16px;
+            outline: none;
+            box-shadow: 
+                inset 4px 4px 8px var(--shadow-light),
+                inset -4px -4px 8px var(--shadow-dark);
+            transition: all 0.3s ease;
+        }
+
+        #lokasiInput::placeholder {
+            color: #a0aec0;
+        }
+
+        #lokasiInput:focus {
+            box-shadow: 
+                inset 6px 6px 12px var(--shadow-light),
+                inset -6px -6px 12px var(--shadow-dark);
+        }
+
+        #cekCuacaBtn {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 20px;
+            background: var(--primary);
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 
+                4px 4px 8px var(--shadow-light),
+                -4px -4px 8px var(--shadow-dark);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #cekCuacaBtn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        #cekCuacaBtn:active {
+            transform: translateY(1px);
+            box-shadow: 
+                2px 2px 4px var(--shadow-light),
+                -2px -2px 4px var(--shadow-dark);
+        }
+
+        .weather-display {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .weather-icon-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 10px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            box-shadow: 
+                8px 8px 16px var(--shadow-light),
+                -8px -8px 16px var(--shadow-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #weatherIcon {
+            width: 70px;
+            height: 70px;
+        }
+
+        #lokasi {
+            font-size: 1.8rem;
+            margin: 10px 0 5px 0;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        #tampilan {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1;
+            color: var(--text-dark);
+            position: relative;
+        }
+        
+        .temp-unit {
+            font-size: 2rem;
+            position: absolute;
+            top: 10px;
+        }
+
+        .details-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .detail-item {
+            padding: 15px;
+            border-radius: 20px;
+            background: var(--bg-light);
+            box-shadow: 
+                4px 4px 8px var(--shadow-light),
+                -4px -4px 8px var(--shadow-dark);
+            text-align: center;
+        }
+
+        .detail-item b {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+
+        .detail-item p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        #feedbackInfo {
+            padding: 20px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 400;
+            display: block;
+            color: var(--secondary);
+        }
+        body.dark-mode {
+            --text-light: #f8f9fa;
+            --text-dark: #e2e8f0;
+            --bg-light: #1a202c;
+            --card-bg: #2d3748;
+            --shadow-light: rgba(0, 0, 0, 0.3);
+            --shadow-dark: rgba(74, 85, 104, 0.2);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
