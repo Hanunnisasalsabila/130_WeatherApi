@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="weather-app">
+        <div class="app-header">
+            <h1 class="app-title">Info Cuaca Detail</h1>
+            <p class="app-subtitle">Data lengkap dari lokasi pilihanmu</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="lokasiInput" placeholder="Cari kota...">
+            <button id="cekCuacaBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
