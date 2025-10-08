@@ -1,0 +1,26 @@
+            const urlapi = `https://api.weatherapi.com/v1/current.json?key=a21e2350c57a4bc28da64045250810&q=${lokasiInput}&aqi=no`;
+
+            $.ajax({
+                url: urlapi,
+                method: "GET",
+                success: function(data) {
+                    $("#tampilan").html(Math.round(data.current.temp_c) + "<span class='temp-unit'>°C</span>");
+                    $("#weatherIcon").attr("src", "https:" + data.current.condition.icon);
+                    $("#lokasi").text(data.location.name);
+                    $("#negara").text(data.location.country);
+                    $("#provinsi").text(data.location.region);
+                    $("#latitude").text(data.location.lat);
+                    $("#longitude").text(data.location.lon);
+                    $("#humidity").text(data.current.humidity + "%");
+                    $("#windSpeed").text(data.current.wind_kph + " km/j");
+                    
+                    $("#feedbackInfo").hide();
+                    $("#weatherDisplay").fadeIn(400);
+                },
+                error: function(error) {
+                    console.log(error);
+                    $("#feedbackInfo").text("Lokasi tidak ditemukan.").show();
+                    $("#weatherDisplay").hide();
+                }
+            });
+        }
