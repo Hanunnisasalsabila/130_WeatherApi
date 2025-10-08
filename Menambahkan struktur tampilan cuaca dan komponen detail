@@ -1,0 +1,37 @@
+        <div id="feedbackInfo">Masukkan nama kota untuk melihat cuaca</div>
+
+        <div class="weather-display" id="weatherDisplay">
+            <div class="weather-icon-container">
+                <img id="weatherIcon" src="" alt="Ikon Cuaca">
+            </div>
+            <h1 id="lokasi">-</h1>
+            <div id="tampilan">-<span class="temp-unit">°C</span></div>
+            
+            <div class="details-container">
+                <div class="detail-item">
+                    <b>Negara</b>
+                    <p id="negara">-</p>
+                </div>
+                <div class="detail-item">
+                    <b>Provinsi</b>
+                    <p id="provinsi">-</p>
+                </div>
+                <div class="detail-item">
+                    <b>Latitude</b>
+                    <p id="latitude">-</p>
+                </div>
+                <div class="detail-item">
+                    <b>Longitude</b>
+                    <p id="longitude">-</p>
+                </div>
+                <div class="detail-item">
+                    <b>Kelembapan</b>
+                    <p id="humidity">-</p>
+                </div>
+                <div class="detail-item">
+                    <b>Angin</b>
+                    <p id="windSpeed">-</p>
+                </div>
+            </div>
+        </div>
+    </div>
